@@ -303,7 +303,9 @@ async fn handle_server_fns_inner(
             let mut res = service.run(req).await;
 
             // update response as needed
-            let res_options = expect_context::<ResponseOptions>().0;
+            // let res_options = expect_context::<ResponseOptions>().0;
+            let res_options =
+                use_context::<ResponseOptions>().unwrap_or_default().0;
             let res_options_inner = res_options.read();
             let (status, mut res_headers) =
                 (res_options_inner.status, res_options_inner.headers.clone());
