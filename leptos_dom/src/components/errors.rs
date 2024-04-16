@@ -107,8 +107,8 @@ where
                             use leptos_reactive::{on_cleanup, queue_microtask};
                             on_cleanup(move || {
                               queue_microtask(move || {
-                                leptos::logging::log!(&id);
-                                leptos::logging::log!(&errors);
+                                leptos::logging::log!("{:?}",&id);
+                                leptos::logging::log!("{:?}",&errors);
                                 errors.update(|errors: &mut Errors| {
                                   errors.remove(&id);
                                 });
